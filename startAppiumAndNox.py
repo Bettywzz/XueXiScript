@@ -33,10 +33,10 @@ while 1:
     pos = find_flash_window()
     if(pos == None):
         print("Appium 未开启!")
-        time.sleep(5)
+        time.sleep(10)
     else:
         #print("打开Appium")
-        time.sleep(5)
+        time.sleep(15)
         mouse_click(960, 640)
         break
     
