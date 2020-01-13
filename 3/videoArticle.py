@@ -17,6 +17,8 @@ all_of_vod_list = np.load ("move_db.npy").tolist()
 
 #动作间隔的随机数
 series = [2,3,4,5,6,7,8,9,10,11,12]
+#观看视频的随机数
+vod_series= [380,390,400,410,420]
 
 def init_driver():   #return desired_caps字典
     desired_caps = {}
@@ -171,7 +173,16 @@ def look_vod(driver):
     # print("视频学习完成")
     move_list = np.array (all_of_vod_list)
     np.save ('move_db.npy',move_list)
-    
+
+# 百灵开始看
+def easy_vod(driver):
+	vodTime = random.choice(vod_series)+random.choice(series)
+	driver.find_element_by_xpath('//android.widget.TextView[@text="百灵"]').click()
+	time.sleep(5)
+	print('开始视频学习,随机看：',vodTime,'s')
+	driver.tap([(500,500), (600,600)], 500)
+	time.sleep(vodTime)
+
 def print_log():
     print("等待任务执行")
 
@@ -186,10 +197,10 @@ def job():
     time.sleep(10)
     look_text(driver)
     move_to_index(driver)
+    #easy_vod(driver)    
     look_vod(driver)
     driver.quit()
     print("文章视频任务完成")
-    os.popen ("taskkill /im /F node.exe")
     # print("正在关闭夜神模拟器")
     # os.popen (r"D:\Nox\bin\Nox.exe quit -index:0 ")
     # time.sleep(5)
