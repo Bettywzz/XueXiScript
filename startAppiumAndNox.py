@@ -1,6 +1,5 @@
 import time
 import win32gui
-import win32ui
 import win32api
 import win32con
 import subprocess
@@ -28,15 +27,19 @@ def mouse_click(x, y):
 #print("正在查找Appium窗口")
 os.popen( r'D:\Nox\bin\Nox.exe launch -name:夜神模拟器')
 #os.popen( r'"C:\Program Files\Appium\Appium.exe" launch -name:Appium')
-res = subprocess.Popen('appium', shell=True)
-while 1:
-    pos = find_flash_window()
-    if(pos == None):
-        print("Appium 未开启!")
-        time.sleep(10)
-    else:
-        #print("打开Appium")
-        time.sleep(15)
-        mouse_click(960, 640)
-        break
+res = subprocess.Popen('appium -a 127.0.0.1 -p 4723', shell=True)
+print("Appium 开启ing!")
+while True:
+    continue
+# zhuanm
+# while 1:
+#     pos = find_flash_window()
+#     if(pos == None):
+#         print("Appium 未开启!")
+#         time.sleep(10)
+#     else:
+#         #print("打开Appium")
+#         time.sleep(15)
+#         mouse_click(960, 640)
+#         break
     
