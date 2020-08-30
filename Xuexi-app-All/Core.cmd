@@ -69,6 +69,7 @@ echo=
 echo=[INFO] 60秒后自动关闭程序！
 TIMEOUT /T 60
 taskkill /f /im  "Nox.exe"
+taskkill /f /im node.exe 
 taskkill /f /im  "cmd.exe"
 
 exit
